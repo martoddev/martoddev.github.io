@@ -1,0 +1,329 @@
+/* ==========================================
+   1. GLOBAL RESETS & CORE VARIABLES
+   ========================================== */
+:root {
+    --bg-main: #060608;
+    --bg-card: #0d0e12;
+    --border-color: #1a1c23;
+    --text-main: #f4f4f6;
+    --text-muted: #888996;
+    --accent-wally: #ff4757;
+    --accent-roblox: #2ed573;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   2. TOP NAVIGATION
+   ========================================== */
+.social-category {
+    background-color: rgba(13, 14, 18, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0.75rem 2rem;
+}
+
+.category-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.category-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.category-links {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: #14151f;
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.category-item .icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* ==========================================
+   3. HERO SECTION (LAYOUT)
+   ========================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10rem 2rem 6rem 2rem; /* Erhöhtes Top-Padding behebt Überlagerung */
+    position: relative;
+    z-index: 10;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #14151f;
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -3px;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to bottom, #ffffff 40%, #a2a4b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn.primary {
+    background-color: var(--text-main);
+    color: var(--bg-main);
+}
+
+.btn.secondary {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.hero-discord-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 3rem;
+    background-color: rgba(88, 101, 242, 0.08);
+    border: 1px solid rgba(88, 101, 242, 0.25);
+    padding: 0.6rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.discord-hero-icon {
+    width: 20px;
+    height: 20px;
+    color: #5865F2;
+}
+
+/* ==========================================
+   4. LAYOUT SECTIONS & CONTENT GRID
+   ========================================== */
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    color: var(--text-muted);
+    margin-bottom: 4rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Nutzt die volle Breite */
+    gap: 2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 2.5rem;
+    border-radius: 20px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+/* Containers */
+.card, .setup-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 2.5rem;
+    border-radius: 20px;
+    position: relative;
+}
+
+.card-tag {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-wally);
+}
+
+.code-box {
+    background-color: #060608;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    margin-top: 2rem;
+    
+    /* DIESE ZWEI ZEILEN BEHEBEN DEN BUG: */
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* Dashboard Table Setup */
+.table-wrapper {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.utils-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.utils-table th {
+    background-color: #111217;
+    padding: 1.25rem 2rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.utils-table td {
+    padding: 1.75rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.module-name {
+    font-weight: 700;
+    color: var(--accent-roblox);
+}
+
+.btn-download {
+    display: inline-block;
+    background: #14151f;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 0.6rem 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.text-right { text-align: right; }
+
+.main-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 2rem;
+    background-color: #08090c;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 1.5rem;
+}

@@ -1,0 +1,116 @@
+/* ==========================================
+   1. GLOBAL MOUSE LIGHT
+   ========================================== */
+.global-mouse-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(94, 106, 210, 0.05) 0%, rgba(0,0,0,0) 65%);
+    border-radius: 50%;
+    pointer-events: none; /* Klicks gehen durch das Licht hindurch */
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Sicher hinter allen Elementen */
+}
+
+/* ==========================================
+   2. RE-ACTIVATED BUTTON ANIMATIONS & HOVERS
+   ========================================== */
+.hover-lift {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Jeder interaktive Button und Link hebt sich jetzt flüssig ab */
+.hover-lift:hover {
+    transform: translateY(-4px) scale(1.02);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+.table-row-interactive {
+    transition: background-color 0.2s ease;
+}
+
+.table-row-interactive:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Download Feedback State Style */
+.btn-download {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-download:hover {
+    background: var(--text-main);
+    color: var(--bg-main);
+    transform: scale(1.05);
+}
+
+.btn-download.download-success {
+    background: var(--accent-roblox) !important;
+    color: #000000 !important;
+    border-color: var(--accent-roblox) !important;
+    transform: scale(1.02);
+}
+
+/* ==========================================
+   3. SCROLL ANIMATION MECHANICS
+   ========================================== */
+.hero-content {
+    animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-text {
+    view-timeline-name: --rev-text;
+    view-timeline-axis: block;
+    animation-name: textSlide;
+    animation-fill-mode: both;
+    animation-timeline: --rev-text;
+    animation-range: entry 10% cover 30%;
+}
+
+.animate-box {
+    view-timeline-name: --rev-box;
+    view-timeline-axis: block;
+    animation-name: boxSlide;
+    animation-fill-mode: both;
+    animation-timeline: --rev-box;
+    animation-range: entry 5% cover 25%;
+}
+
+/* ==========================================
+   4. TIMELINE KEYFRAMES
+   ========================================== */
+@keyframes heroReveal {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes textSlide {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes boxSlide {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
